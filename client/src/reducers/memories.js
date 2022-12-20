@@ -4,7 +4,7 @@ import {
   CREATE,
   UPDATE,
   LIKE,
-} from "../actions/actionTypes";
+} from "../constants/actionTypes";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state = [], action) => {
@@ -17,10 +17,9 @@ export default (state = [], action) => {
 
     case UPDATE:
     case LIKE:
-      return state.map(
-        (memoryPost) => [ memoryPost._id = action.payload._id ? action.payload : memoryPost, ...state]
+      return state.map((memoryPost) =>
+        memoryPost._id === action.payload._id ? action.payload : memoryPost
       );
-
     case DELETE:
       return state.filter((memoryPost) => memoryPost._id !== action.payload);
 

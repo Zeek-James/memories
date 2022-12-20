@@ -21,33 +21,37 @@ export const Memory = ({ memory, setCurrentId }) => {
 
   return (
     <Card className={classes.card}>
-      <CardMedia className={classes.media} image={memory.selectedFile} />
+      <CardMedia
+        className={classes.media}
+        image={memory?.selectedFile}
+        title={memory?.title}
+      />
       <div className={classes.overlay}>
-        <Typography variant="h6">{memory.creator}</Typography>
+        <Typography variant="h6">{memory?.creator}</Typography>
         <Typography variant="body2">
-          {moment(memory.createdAt).fromNow()}
+          {moment(memory?.createdAt).fromNow()}
         </Typography>
       </div>
       <div className={classes.overlay2}>
         <Button
           style={{ color: "white" }}
           size="small"
-          onClick={() => setCurrentId(memory._id)}
+          onClick={() => setCurrentId(memory?._id)}
         >
           <MoreHorizIcon fontSize="default" />
         </Button>
       </div>
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary">
-          {memory.tags.map((tag) => ` #${tag}`)}
+          {memory?.tags?.map((tag) => ` #${tag}`)}
         </Typography>
       </div>
       <Typography className={classes.title} variant="h5" gutterBottom>
-        {memory.title}
+        {memory?.title}
       </Typography>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {memory.message}
+          {memory?.message}
         </Typography>
       </CardContent>
       <CardActions className={classes.cardActions}>
@@ -55,18 +59,18 @@ export const Memory = ({ memory, setCurrentId }) => {
           size="small"
           color="primary"
           onClick={() => {
-            dispatch(likeMemPost(memory._id));
+            dispatch(likeMemPost(memory?._id));
           }}
         >
           <ThumbUpAltIcon />
           &nbsp; Like &nbsp;
-          {memory.likeCount}
+          {memory?.likeCount}
         </Button>
         <Button
           size="small"
           color="primary"
           onClick={() => {
-            dispatch(deleteMemory(memory._id));
+            dispatch(deleteMemory(memory?._id));
           }}
         >
           <DeleteIcon fontSize="small" />

@@ -55,7 +55,6 @@ export const Form = ({ currentId, setCurrentId }) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          {" "}
           {currentId ? "Editing" : "Creating"} a Memory
         </Typography>
         <TextField
